@@ -6,12 +6,10 @@ file_path = '数据文件/TDOC数据格式.xlsx'
 df = pd.read_excel(file_path)
 
 # 获取位置信息, 默认第一行为列名，所以索引是从第二行第一列开始
-position = df.iloc[1, 14]  # 获取B/L No位置信息
-length = df.iloc[2, 14]  # 获取B/L No截取长度
+position = int(df.iloc[1, 14])  # 获取B/L No位置信息
+length = int(df.iloc[2, 14])  # 获取B/L No截取长度
 
-print(type(position))
 print(position)
-print(type(length))
 
 # 获取原始数据
 origin_data = df.iloc[9, 0]
@@ -20,7 +18,7 @@ origin_data = df.iloc[9, 0]
 initial_value = origin_data[position-1:position+length-1]
 
 # 需要替换的值
-replace_value = '828'
+replace_value = '822'
 if len(replace_value) <= length:
     replace_fix_value = replace_value.ljust(length)
 else:
@@ -45,7 +43,7 @@ ws = wb.active
 modified_value = df.iloc[9, 0]
 
 # 将修改后的数据写入到Excel文件中的对应单元格
-cell = ws.cell(row=10, column=1)
+cell = ws.cell(row=12, column=1)
 cell.value = modified_value
 
 # 保存工作簿
