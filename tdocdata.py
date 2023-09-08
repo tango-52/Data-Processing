@@ -8,8 +8,9 @@ df = pd.read_excel(file_path)
 # 定义多个坐标、长度和替换值，它们是一一对应的,默认第一行为列名，所以索引是从第二行第一列开始
 positions = [int(df.iloc[1, 13]), int(df.iloc[1, 14]), int(df.iloc[1, 15]), int(df.iloc[1, 19])]  # 坐标列表，按需修改
 lengths = [int(df.iloc[2, 13]), int(df.iloc[2, 14]), int(df.iloc[2, 15]), int(df.iloc[2, 19])]  # 长度列表，按需修改
+
 replace_values = [
-    '',  # buyerInvoiceNo 长度15
+    '2',  # buyerInvoiceNo 长度15
     '3',  # blNo  长度20
     '4',  # blDate  长度8
     '6'   # invoiceNo  长度7
@@ -42,11 +43,13 @@ def process_data(position, lengths, replace_value, modified_data):
 
 for position, length, replace_value in zip(positions, lengths, replace_values):
     origin_data = process_data(position, length, replace_value, origin_data)
-    print(origin_data)
 
 # 将修改后的数据写入到Excel文件中的对应单元格
 cell = ws.cell(row=12, column=1)
 cell.value = origin_data
+
+# 输出最终结果
+print(origin_data)
 
 # 保存工作簿
 wb.save(file_path)
