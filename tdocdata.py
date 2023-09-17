@@ -1,17 +1,14 @@
-import pandas as pd
-import yaml
 from openpyxl import load_workbook
+from date_process import *
 
-# 读取TDOC数据格式处理文件
-file_path = '数据文件/TDOC数据格式.xlsx'
-df = pd.read_excel(file_path)
-
-# 读取 YAML 配置文件
-with open('tdoc_data_config.yaml', 'r', encoding='utf-8') as config_file:
-    config_data = yaml.load(config_file, Loader=yaml.FullLoader)
+config_file = 'tdoc_data_config.yaml'  # tdoc配置文件
+config_data = read_config_file(config_file)  # 读取 YAML 配置文件
 
 positions = config_data['positions']
 lengths = config_data['lengths']
+file_path = config_data['file_path']
+
+df = read_excel_file(file_path)  # 读取需要处理的文件
 
 replace_values = [
     '23',  # buyerInvoiceNo 长度15
@@ -20,15 +17,11 @@ replace_values = [
     '23'   # invoiceNo  长度7
 ]
 
-# 创建原始数据的副本
-df_copy = df.copy()
+df_copy = df.copy()  # 创建原始数据的副本
 
-# 获取原始数据
-origin_data = df.iloc[9, 0]
+origin_data = df.iloc[9, 0]  # 获取原始数据
 
-# 使用openpyxl来写入数据，并保留原始的公式或函数
-wb = load_workbook('数据文件/TDOC数据格式.xlsx')
-ws = wb.active
+# ws = rewrite_excel(file_path)  # 使用openpyxl来写入数据，并保留原始的公式或函数
 
 
 def process_data(position, lengths, replace_value, modified_data):
@@ -47,13 +40,16 @@ def process_data(position, lengths, replace_value, modified_data):
 
 for position, length, replace_value in zip(positions, lengths, replace_values):
     origin_data = process_data(position, length, replace_value, origin_data)
+    rewrite_excel(file_path, origin_data)
 
-# 将修改后的数据写入到Excel文件中的对应单元格
-cell = ws.cell(row=12, column=1)
-cell.value = origin_data
-
-# 输出最终结果
 print(origin_data)
 
+# 将修改后的数据写入到Excel文件中的对应单元格
+# cell = ws.cell(row=12, column=1)
+# cell.value = origin_data
+
+# 输出最终结果
+# print(origin_data)
+
 # 保存工作簿
-wb.save(file_path)
+# wb.save(file_path)
