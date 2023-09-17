@@ -1,19 +1,23 @@
 import pandas as pd
+import yaml
 from openpyxl import load_workbook
 
 # 读取TDOC数据格式处理文件
 file_path = '数据文件/TDOC数据格式.xlsx'
 df = pd.read_excel(file_path)
 
-# 定义多个坐标、长度和替换值，它们是一一对应的,默认第一行为列名，所以索引是从第二行第一列开始
-positions = [int(df.iloc[1, 13]), int(df.iloc[1, 14]), int(df.iloc[1, 15]), int(df.iloc[1, 19])]  # 坐标列表，按需修改
-lengths = [int(df.iloc[2, 13]), int(df.iloc[2, 14]), int(df.iloc[2, 15]), int(df.iloc[2, 19])]  # 长度列表，按需修改
+# 读取 YAML 配置文件
+with open('tdoc_data_config.yaml', 'r', encoding='utf-8') as config_file:
+    config_data = yaml.load(config_file, Loader=yaml.FullLoader)
+
+positions = config_data['positions']
+lengths = config_data['lengths']
 
 replace_values = [
-    '2',  # buyerInvoiceNo 长度15
-    '3',  # blNo  长度20
-    '4',  # blDate  长度8
-    '6'   # invoiceNo  长度7
+    '23',  # buyerInvoiceNo 长度15
+    '23',  # blNo  长度20
+    '23',  # blDate  长度8
+    '23'   # invoiceNo  长度7
 ]
 
 # 创建原始数据的副本
