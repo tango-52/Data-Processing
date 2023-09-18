@@ -1,4 +1,4 @@
-import tdocdata
+import TDocData
 
 
 replace_values = [

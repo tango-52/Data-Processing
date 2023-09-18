@@ -1,6 +1,6 @@
 from date_process import *
 
-config_file = 'tdoc_data_config.yaml'  # tdoc配置文件
+config_file = 'Config/tdoc_data_config.yaml'  # tdoc配置文件
 config_data = read_config_file(config_file)  # 读取 YAML 配置文件
 
 positions = config_data['positions']
