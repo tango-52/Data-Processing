@@ -1,9 +1,9 @@
-import TDocData
+from  date_process import *
+
+config_file = 'Config/sharp_data_config.yaml'
+# config_file = 'Config/tdoc_data_config.yaml'  # tdoc配置文件
 
 
-replace_values = [
-    '23',  # buyerInvoiceNo 长度15
-    '23',  # blNo  长度20
-    '23',  # blDate  长度8
-    '23'   # invoiceNo  长度7
-]
+f = read_config_file(config_file)
+print(f)
+
