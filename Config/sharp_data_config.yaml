@@ -1,14 +1,37 @@
 # 定义多个坐标、长度和替换值，它们是一一对应的,默认第一行为列名，所以索引是从第二行第一列开始
 positions:
    -
-    - 3
-    4
+     - 8     # invoice no
+     - 32    # DO NO
+     - 198   # 仕入先コード
+     - 374   # B/L Master No.
+     - 394   # B/L House No.
    -
-    - 23
-    - 2
+     - 8     # invoice no
+     - 31    # SI_NO
+     - 66    # 社内品番
+     - 124   # D/O_No
+     - 320   # P/O_No
+     - 335   # GPO_P/O_No
 lengths:
- - 15
- - 20
- - 8
- - 7
+   -
+     - 10
+     - 10
+     - 10
+     - 20
+     - 20
+   -
+     - 10
+     - 7
+     - 18
+     - 10
+     - 15
+     - 15
+datalocation:
+   -
+     - 6
+     - 0
+   -
+     - 21
+     - 0
 file_path: 数据文件/SHARP数据格式.xlsx  # SHARP处理文件
