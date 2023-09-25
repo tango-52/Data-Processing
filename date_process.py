@@ -39,3 +39,20 @@ def concat_value(modified_data, position, replace_fix_value, lengths):
     modified_data = modified_data[:position - 1] + replace_fix_value \
                     + modified_data[position - 1 + lengths:]
     return modified_data
+
+
+def conf_data(config_data):
+    positions = config_data['positions']
+    lengths = config_data['lengths']
+    replace_values = config_data['replace_values']
+    return positions, lengths, replace_values
+
+
+def process_data(position, lengths, replace_value, modified_data):
+    """
+    替换原始数据中的值
+    """
+    replace_fix_value = re_value(replace_value, lengths)
+    modified_data = concat_value(modified_data, position, replace_fix_value, lengths)  # 将原有的子串值进行替换
+
+    return modified_data
