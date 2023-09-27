@@ -42,11 +42,11 @@ replace_values:
       - 4
       - 5
       - 6
-data_location:
+data_locations:
    -
-     - 6
+     - 5
      - 0
    -
-     - 21
+     - 20
      - 0
-file_path: 数据文件/SHARP数据格式.xlsx  # SHARP处理文件
+file_path: 数据文件/SHARP_SA.xlsx  # SHARP处理文件
