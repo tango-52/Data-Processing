@@ -27,12 +27,20 @@ def rewrite_excel(file_path, modified_data, row=12, column=1):
 
 # 判断替换value长度 进行截取或者补齐内容
 def re_value(replace_value, lengths):
-    if len(replace_value) <= lengths:
-        replace_fix_value = replace_value.ljust(lengths)
+    if isinstance(replace_value, str):
+        if len(replace_value) <= lengths:
+            replace_fix_value = replace_value.ljust(lengths)
+        else:
+            replace_fix_value = replace_value[:lengths]
+        return replace_fix_value
     else:
-        replace_fix_value = replace_value[:lengths]
-    return replace_fix_value
-
+        # 处理非字符串情况的逻辑
+        str_replace_value =  str(replace_value)  # 将其他类型转换为字符串
+        if len(str_replace_value) <= lengths:
+            replace_fix_value = replace_value.ljust(lengths)
+        else:
+            replace_fix_value = replace_value[:lengths]
+        return replace_fix_value
 
 # 重新拼接数据
 def concat_value(modified_data, position, replace_fix_value, lengths):
@@ -45,7 +53,8 @@ def conf_data(config_data):
     positions = config_data['positions']
     lengths = config_data['lengths']
     replace_values = config_data['replace_values']
-    return positions, lengths, replace_values
+    data_locations = config_data['data_locations']
+    return positions, lengths, replace_values, data_locations
 
 
 def process_data(position, lengths, replace_value, modified_data):
