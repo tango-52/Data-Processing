@@ -1,6 +1,7 @@
 from date_process import *
 
-config_file = 'Config/sharp_data_config.yaml'  # sharp配置文件
+# config_file = 'Config/sharp_data_config.yaml'  # sharp配置文件
+config_file = 'Config/tdoc_data_config.yaml'  # TDOC配置文件
 config_data = read_config_file(config_file)  # 读取 YAML 配置文件
 
 file_path = config_data['file']
@@ -30,8 +31,7 @@ for (loc, row), positions_list, lengths_list, replace_value_list in data_and_coo
     # 将每一组的最终结果添加到结果列表中
     results.append(origin_data)
 
-# print(row_cols)
 # 打印每一组的最终结果
 for result, (row, column) in zip(results, row_cols):
-    print(result, row, column)
+    print(result)
     rewrite_excel(file_path, result, row, column)

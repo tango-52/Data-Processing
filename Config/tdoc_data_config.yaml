@@ -1,12 +1,28 @@
 # 定义多个坐标、长度和替换值，它们是一一对应的,默认第一行为列名，所以索引是从第二行第一列开始
 positions:
- - 75   # buyerInvoiceNo
- - 90   # blNo
- - 110  # blDate
- - 134  # invoiceNo
+-
+  - 75   # buyerInvoiceNo
+  - 90   # blNo
+  - 110  # blDate
+  - 134  # invoiceNo
 lengths:
- - 15
- - 20
- - 8
- - 7
-file_path: 数据文件/TDOC数据格式.xlsx  # TDOC处理文件
+-
+  - 15
+  - 20
+  - 8
+  - 7
+replace_values:
+-
+  - 1
+  - 2
+  - 3
+  - 4
+data_locations:
+-
+  - 9
+  - 0
+row_cols:
+-
+  - 12
+  - 1
+file: 数据文件/TDOC数据格式.xlsx  # TDOC处理文件
