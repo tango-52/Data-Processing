@@ -49,4 +49,11 @@ data_locations:
    -
      - 20
      - 0
-file_path: 数据文件/SHARP_SA.xlsx  # SHARP处理文件
+row_cols:
+  -
+    - 9
+    - 1
+  -
+    - 24
+    - 1
+file: 数据文件/SHARP_SA.xlsx  # SHARP处理文件
