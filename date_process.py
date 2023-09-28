@@ -1,3 +1,5 @@
+from setting import *
+
 
 # 判断替换value长度 进行截取或者补齐内容
 def re_value(replace_value, lengths):
@@ -20,19 +22,20 @@ def concat_value(modified_data, position, replace_fix_value, lengths):
     return modified_data
 
 
-def conf_data(config_data):
+# 获取配置文件中的内容
+def conf_data(config_file):
+    config_data = handle_config(config_file)
     positions = config_data['positions']
     lengths = config_data['lengths']
     replace_values = config_data['replace_values']
     data_locations = config_data['data_locations']
     row_cols = config_data['row_cols']
-    return positions, lengths, replace_values, data_locations, row_cols
+    files = config_data['files']
+    return positions, lengths, replace_values, data_locations, row_cols, files
 
 
+#  替换原始数据
 def process_data(position, lengths, replace_value, modified_data):
-    """
-    替换原始数据中的值
-    """
     replace_fix_value = re_value(replace_value, lengths)
     modified_data = concat_value(modified_data, position, replace_fix_value, lengths)  # 将原有的子串值进行替换
 
