@@ -7,12 +7,12 @@ class Configs:
     """
     配置和数据文件处理
     """
-    def __init__(self, config_file):
-        self.config_file = config_file
+    # def __init__(self):
+        # self.config_file = config_file
 
     # 读取yaml文件
-    def read_config_file(self):
-        with open(self.config_file, 'r', encoding='utf-8') as config_file:
+    def read_config_file(self, config_file):
+        with open(config_file, 'r', encoding='utf-8') as config_file:
             config_data = yaml.load(config_file, Loader=yaml.FullLoader)
         return config_data
 

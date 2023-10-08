@@ -1,19 +1,16 @@
 from date_process import *
 from setting import *
+from config import Configs
 
 
-config_data = cf.read_config_file()  # 读取 YAML 配置文件
-
-# file_path = config_data['file']
-
-# df = cf.read_excel_file(file_path)  # 读取需要处理的文件
+# cf = Configs()  # 传递正确的配置文件路径
+# config_data = cf.read_config_file('Config/sharp_data_config.yaml')  # 读取 YAML 配置文件
 
 
 # 获取positions、lengths等配置数据
-result_positions, result_lengths, replace_values, data_locations, row_cols, file_path = conf_data(config_data)
+result_positions, result_lengths, replace_values, data_locations, row_cols, file_path = conf_data('Config/sharp_data_config.yaml')
 
 df = cf.read_excel_file(file_path)  # 读取需要处理的文件
-
 
 
 # 将坐标和数据组合在一起
