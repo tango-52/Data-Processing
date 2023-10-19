@@ -1,4 +1,4 @@
-from config import *
+from Setting.config import *
 
 
 # 判断替换value长度 进行截取或者补齐内容

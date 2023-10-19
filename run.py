@@ -1,6 +1,7 @@
-from SharpData import process_data_for_file, rewrite_excel
+from Setting.SharpData import process_data_for_file, rewrite_excel
 
 if __name__ == '__main__':
+    # 选择需要处理的数据
     results, row_cols, file_path = process_data_for_file('Config/sharp_data_config.yaml')
 
     # 打印每一组的最终结果

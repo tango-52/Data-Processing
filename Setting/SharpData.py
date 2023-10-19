@@ -1,5 +1,5 @@
-from date_process import *
-from config import *
+from Setting.date_process import *
+from Setting.config import *
 
 
 def process_data_for_file(filename):
