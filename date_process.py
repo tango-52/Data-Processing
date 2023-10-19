@@ -1,4 +1,4 @@
-from setting import *
+from config import *
 
 
 # 判断替换value长度 进行截取或者补齐内容

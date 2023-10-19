@@ -1,17 +1,9 @@
-from config import Configs as cf
-from config import Configs
+from SharpData import process_data_for_file, rewrite_excel
 
+if __name__ == '__main__':
+    results, row_cols, file_path = process_data_for_file('Config/sharp_data_config.yaml')
 
-# 读取yaml配置
-def handle_config(config_file):
-    cf = Configs()  # 传递正确的配置文件路径
-    config_data = cf.read_config_file(config_file)
-    return config_data
-
-
-# 获取Excel处理文件
-# def file_path(config_file):
-#     config_data = cf.read_config_file(config_file)
-#     path = config_data['file']
-#     return path
-
+    # 打印每一组的最终结果
+    for result, (row, column) in zip(results, row_cols):
+        print(result)
+        rewrite_excel(file_path, result, row, column)
