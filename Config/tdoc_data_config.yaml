@@ -25,4 +25,4 @@ row_cols:
 -
   - 12
   - 1
-file: Data/TDOC数据格式.xlsx  # TDOC处理文件
+files: Data/TDOC数据格式.xlsx  # TDOC处理文件
