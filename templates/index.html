@@ -16,5 +16,12 @@
         </select>
         <BUTTON type="submit" >生成结果</BUTTON>
     </form>
+    <h4>处理结果</h4>
+    {% for result in all_results %}
+        <div>
+            <pre>{{ result }}</pre>
+        </div>
+    {% endfor %}
+
 </body>
 </html>

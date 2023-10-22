@@ -9,8 +9,13 @@ def index():
         return render_template('index.html')
     if request.method == 'POST':
         filename_path = request.form.get('data_type')
-        process_data(filename_path)
-        return render_template('index.html')
+        all_results = process_data(filename_path)  # 获取处理结果
+        print(all_results)
+        return render_template('index.html', all_results=all_results)
+
+@app.route('/index/result', methods=['GET', 'POST'])
+def result():
+
 
 
 if __name__ == '__main__':
