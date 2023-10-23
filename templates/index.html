@@ -5,23 +5,18 @@
     <title>SAHRP B2B 数据</title>
 </head>
 <body>
-    <h1>选择需要生成的B2B数据</h1>
-    <form action="/index" method="post" enctype="multipart/form-data">
+    <h1>B2B数据生成</h1>
+    <!-- 数据选择表单 -->
+    <form action="/index/data_edit" method="get">
         <label>选择数据</label>
 
         <select id="data-select" name="data_type">
             <option value="" disabled selected>--Please choose an option--</option>
-            <option value="Config/sharp_data_config.yaml">SA_FROM_SAP</option>
-            <option value="Config/tdoc_data_config.yaml">TDOC_INVOICE</option>
+            <option value="SA">SA_FROM_SAP</option>
+            <option value="TDOC">TDOC_INVOICE</option>
         </select>
-        <BUTTON type="submit" >生成结果</BUTTON>
+        <BUTTON type="submit" >编辑</BUTTON>
     </form>
-    <h4>处理结果</h4>
-    {% for result in all_results %}
-        <div>
-            <pre>{{ result }}</pre>
-        </div>
-    {% endfor %}
 
 </body>
 </html>

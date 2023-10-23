@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>B2B 数据处理</title>
+</head>
+<body>
+    <h1>B2B数据生成</h1>
+    <!-- 创建一个返回按钮 -->
+    <a href="/index" class="return-button">返回</a>
+    <! -- 输入需要生成tdoc的数据 -->
+    <form action="/index/data_edit" method="post">
+        <h3>TDOC INVOICE</h3>
+        <div>
+            <label>buyerInvoiceNo<input type="text" name="tdoc[]" id="buyerInvoiceNo"/></label>
+        </div>
+        <div>
+            <label>blNo<input type="text" name="tdoc[]" id="blNo"/></label>
+        </div>
+        <div>
+            <label>blDate<input type="text" name="tdoc[]" id="blDate"/></label>
+        </div>
+        <div>
+            <label>invoiceNo<input type="text" name="tdoc[]" id="invoiceNo"/></label>
+        </div>
+        <input type="hidden" name="data_type" value="{{ FS }}">
+        <button type="submit">生成数据</button>
+    </form>
+    <h4>处理结果</h4>
+        <div>
+            <pre>{{ result }}</pre>
+            <pre>{{ FS1 }}</pre>
+
+        </div>
+
+</body>
+</html>
