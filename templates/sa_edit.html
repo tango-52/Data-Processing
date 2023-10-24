@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sa 数据处理</title>
+</head>
+<body>
+    <h1>B2B数据生成</h1>
+    <!-- 创建一个返回按钮 -->
+    <a href="/index" class="return-button">返回</a>
+    <!--输入需要生成tdoc的数据-->
+    <form action="/index/sa" method="post">
+        <h3>TDOC INVOICE</h3>
+        <label>WA2</label>
+        <div>
+            <label>invoice no<input type="text" name="wa2[]" id="wa2invoice no"/></label>
+        </div>
+        <div>
+            <label>DO NO<input type="text" name="wa2[]" id="DO NO"/></label>
+        </div>
+        <div>
+            <label>仕入先コード<input type="text" name="wa2[]" id="仕入先コード"/></label>
+        </div>
+        <div>
+            <label>B/L Master No.<input type="text" name="wa2[]" id="B/L Master No."/></label>
+        </div>
+        <div>
+            <label>B/L House No.<input type="text" name="wa2[]" id="B/L House No."/></label>
+        </div>
+        <label>WA3</label>
+        <div>
+            <label>invoice no<input type="text" name="wa3[]" id="wa3invoice no"/></label>
+        </div>
+        <div>
+            <label>SI_NO<input type="text" name="wa3[]" id="SI_NO"/></label>
+        </div>
+        <div>
+            <label>社内品番<input type="text" name="wa3[]" id="社内品番"/></label>
+        </div>
+        <div>
+            <label>D/O_No<input type="text" name="wa3[]" id="D/O_No"/></label>
+        </div>
+        <div>
+            <label>P/O_No<input type="text" name="wa3[]" id="P/O_No"/></label>
+        </div>
+        <div>
+            <label>GPO_P/O_No<input type="text" name="wa3[]" id="GPO_P/O_No"/></label>
+        </div>
+        <div>
+            <button type="submit">生成数据</button>
+        </div>
+    </form>
+    <h4>处理结果</h4>
+    {% for result in all_result %}
+    <div>
+        <pre>{{result}}</pre>
+    </div>
+    {% endfor %}
+</body>
+</html>

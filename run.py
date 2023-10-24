@@ -6,6 +6,7 @@ def process_data(filename_path, replace_values):
     # 选择需要处理的数据
     results, row_cols, file_path = process_data_for_file(filename_path, replace_values)
     # 打印每一组的最终结果
+    print(results)
     for result, (row, column) in zip(results, row_cols):
         rewrite_excel(file_path, result, row, column)
         all_results.append(result)
