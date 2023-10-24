@@ -6,8 +6,17 @@
 </head>
 <body>
     <h1>B2B数据生成</h1>
-    <!-- 创建一个返回按钮 -->
-    <a href="/index" class="return-button">返回</a>
+    <form action="/index/data_edit" method="get">
+        <label>选择数据</label>
+
+        <select id="data-select" name="data_type">
+            <option value="" disabled selected>--Please choose an option--</option>
+            <option value="sa">SA_FROM_SAP</option>
+            <option value="tdoc">TDOC_INVOICE</option>
+        </select>
+        <BUTTON type="submit" >编辑</BUTTON>
+    </form>
+
     <!--输入需要生成tdoc的数据-->
     <form action="/index/tdoc" method="post">
         <h3>TDOC INVOICE</h3>
