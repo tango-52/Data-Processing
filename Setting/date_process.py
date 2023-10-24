@@ -27,11 +27,11 @@ def conf_data(config_file):
     config_data = handle_config(config_file)
     positions = config_data['positions']
     lengths = config_data['lengths']
-    replace_values = config_data['replace_values']
+    # replace_values = config_data['replace_values']
     data_locations = config_data['data_locations']
     row_cols = config_data['row_cols']
     files = config_data['files']
-    return positions, lengths, replace_values, data_locations, row_cols, files
+    return positions, lengths, data_locations, row_cols, files
 
 
 #  替换原始数据

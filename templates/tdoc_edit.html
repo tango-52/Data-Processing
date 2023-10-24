@@ -8,8 +8,8 @@
     <h1>B2B数据生成</h1>
     <!-- 创建一个返回按钮 -->
     <a href="/index" class="return-button">返回</a>
-    <! -- 输入需要生成tdoc的数据 -->
-    <form action="/index/data_edit" method="post">
+    <!--输入需要生成tdoc的数据-->
+    <form action="/index/tdoc" method="post">
         <h3>TDOC INVOICE</h3>
         <div>
             <label>buyerInvoiceNo<input type="text" name="tdoc[]" id="buyerInvoiceNo"/></label>
@@ -23,15 +23,14 @@
         <div>
             <label>invoiceNo<input type="text" name="tdoc[]" id="invoiceNo"/></label>
         </div>
-        <input type="hidden" name="data_type" value="{{ FS }}">
+        <!--  获取数据类型，传入后端进行处理 -->
+<!--        <input type="hidden" name="data_type" value="{{ data_type }}">-->
         <button type="submit">生成数据</button>
     </form>
     <h4>处理结果</h4>
-        <div>
-            <pre>{{ result }}</pre>
-            <pre>{{ FS1 }}</pre>
-
-        </div>
+    <div>
+        <pre>{{ result }}</pre>
+    </div>
 
 </body>
 </html>

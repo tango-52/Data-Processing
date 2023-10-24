@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect
 from run import process_data
 app = Flask(__name__)
 
@@ -10,15 +10,25 @@ def index():
 
 @app.route('/index/data_edit', methods=['GET', 'POST'])
 def data_edit():
-    FS = request.args.get('data_type')
-    print(FS)
+    # 判断数据类型，重定向
+    data_type = request.args.get('data_type')
+    if data_type == 'tdoc':
+        return redirect(url_for('tdoc_edit'))
+
+
+@app.route('/index/tdoc', methods=['GET', 'POST'])
+def tdoc_edit():
     if request.method == 'GET':
-        return render_template('data_edit.html', FS=FS)
+        # 返回数据输入页面
+        return render_template('tdoc_edit.html')
     if request.method == 'POST':
-        data = request.form.getlist('tdoc[]')
-        FS1 = request.form.get('data_type')
-        print(FS)
-        return render_template('data_edit.html', result=data, FS1=FS1)
+        # 返回数据生成结果
+        replace_values = []
+        filename_path = 'Config/tdoc_data_config.yaml'
+        replace_value = request.form.getlist('tdoc[]')
+        replace_values.append(replace_value)
+        result = process_data(filename_path, replace_values)
+        return render_template('tdoc_edit.html', result=result)
 
 
 if __name__ == '__main__':
