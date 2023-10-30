@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>tdoc 数据处理</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
 </head>
 <body>
     <h1>B2B数据生成</h1>
@@ -35,9 +36,34 @@
         <button type="submit">生成数据</button>
     </form>
     <h4>处理结果</h4>
+    {% for result in result %}
     <div>
         <pre>{{ result }}</pre>
+        <button class="copy-button" data-clipboard-text="{{ result }}">复制</button>
     </div>
+    {% endfor %}
+
+    <script>
+        var clipboard = new ClipboardJS('.copy-button');
+
+        clipboard.on('success', function(e) {
+            var successAlert = document.createElement("div");
+            successAlert.className = "success-alert";
+            successAlert.innerHTML = '已复制到剪贴板：' + e.text;
+            document.body.appendChild(successAlert);
+
+            setTimeout(function () {
+                document.body.removeChild(successAlert);
+            }, 2000); // 2秒后自动关闭提示
+
+            e.clearSelection();
+        });
+
+        clipboard.on('error', function(e) {
+            alert('复制失败：' + e.action);
+        });
+    </script>
+
 
 </body>
 </html>
