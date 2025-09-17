@@ -1,10 +1,12 @@
 import pandas as pd
 from openpyxl import load_workbook
+import os
 import yaml
 
 
 # 读取yaml文件
 def read_config_file(config_file):
+    print("当前工作目录:", os.getcwd())
     with open(config_file, 'r', encoding='utf-8') as config_file:
         config_data = yaml.load(config_file, Loader=yaml.FullLoader)
     return config_data
